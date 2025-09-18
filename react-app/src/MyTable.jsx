@@ -7,7 +7,7 @@ export default class MyTable extends React.Component {
         style: {
                 table:
                 {
-                    border: '1px solid black',
+                    border: '0px solid black',
                     borderCollapse: 'collapse',
                 },
                 td:
@@ -33,7 +33,9 @@ export default class MyTable extends React.Component {
                     */}
 
                     {this.state.rows.map((word, wordIdx)=><tr key={wordIdx}>
-                        <td style={this.state.style.td}>{word}</td>
+                        {[...word].map((char, charIdx)=><td key={charIdx} style={this.state.style.td}>
+                            {char=='_' ? ' ' : char}
+                        </td>)}
                     </tr>)}
 
                 </tbody>
