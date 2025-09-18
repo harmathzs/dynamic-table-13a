@@ -15,7 +15,9 @@ export default class MyTable extends React.Component {
                     border: '1px solid black',
                     borderCollapse: 'collapse',
                 },                
-            }
+            },
+
+        rows: []
     }
 
     render() {
@@ -23,11 +25,16 @@ export default class MyTable extends React.Component {
             <table style={this.state.style.table}>
                 <tbody>
                     <tr>
-                        <td style={this.state.style.td}>TODO</td>
-                        <td style={this.state.style.td}>TODO</td>
+                        <td style={this.state.style.td}>TODO - {JSON.stringify(this.state.rows)}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    }
+
+    componentDidMount() {
+        const words = this.props.data.split(" ")
+        console.log('words', words)
+        this.setState({rows: words})
     }
 }
